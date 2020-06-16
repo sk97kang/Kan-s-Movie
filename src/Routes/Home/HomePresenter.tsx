@@ -57,7 +57,7 @@ const HomePresenter: React.FC<IProps> = ({
           </Section>
         )}
         {upcoming.length > 0 && (
-          <Section title="Upcomig Playing" path="movie/upcoming">
+          <Section title="Upcoming Playing" path="movie/upcoming">
             {upcoming.map((movie) => (
               <Poster
                 key={movie.id}

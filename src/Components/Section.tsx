@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
+import { useT } from "../Translation/context";
 
 const hover_scale = keyframes`
     from {
@@ -81,14 +82,17 @@ interface IProps {
   path?: string;
 }
 
-const Section: React.SFC<IProps> = ({ title, path, children }) => (
-  <Container>
-    <Title>{title}</Title>
-    <Grid isFlex={path ? true : false}>{children}</Grid>
-    {path && path !== "search" && !path.includes("tv") && (
-      <MoreBtn to={`/more/${path}`}>More</MoreBtn>
-    )}
-  </Container>
-);
+const Section: React.SFC<IProps> = ({ title, path, children }) => {
+  const t = useT();
+  return (
+    <Container>
+      <Title>{t(title)}</Title>
+      <Grid isFlex={path ? true : false}>{children}</Grid>
+      {path && path !== "search" && !path.includes("tv") && (
+        <MoreBtn to={`/more/${path}`}>{t("More")}</MoreBtn>
+      )}
+    </Container>
+  );
+};
 
 export default Section;

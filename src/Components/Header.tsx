@@ -1,6 +1,8 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import styled from "styled-components";
+import { useSetLang, useT, useLang } from "../Translation/context";
+import { changeLanguage } from "../api";
 
 const Header = styled.header`
   position: fixed;
@@ -18,6 +20,7 @@ const Header = styled.header`
 
 const List = styled.ul`
   display: flex;
+  width: 100%;
 `;
 
 const Item = styled.li<{ current: boolean }>`
@@ -44,26 +47,59 @@ const BackBtn = styled.button`
   cursor: pointer;
 `;
 
-export default withRouter(({ location: { pathname }, history: { goBack } }) => (
-  <Header>
-    <List>
-      <BackBtn
-        onClick={() => {
-          if (pathname !== "/") goBack();
-        }}
-        title="뒤로가기"
-      >
-        ◀
-      </BackBtn>
-      <Item current={pathname === "/"}>
-        <SLink to="/">Movie</SLink>
-      </Item>
-      <Item current={pathname === "/tv"}>
-        <SLink to="/tv">TV</SLink>
-      </Item>
-      <Item current={pathname === "/search"}>
-        <SLink to="/search">Search</SLink>
-      </Item>
-    </List>
-  </Header>
-));
+const TransBtn = styled.button`
+  width: 80px;
+  font-size: 18px;
+  background-color: inherit;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: auto;
+`;
+
+export default withRouter(
+  ({ location: { pathname }, history: { goBack, push } }) => {
+    const t = useT();
+    const setLang = useSetLang();
+    const lang = useLang();
+    return (
+      <Header>
+        <List>
+          <BackBtn
+            onClick={() => {
+              if (pathname !== "/") goBack();
+            }}
+            title={t("Back")}
+          >
+            ◀
+          </BackBtn>
+          <Item current={pathname === "/"}>
+            <SLink to="/">{t("Movie")}</SLink>
+          </Item>
+          <Item current={pathname === "/tv"}>
+            <SLink to="/tv">{t("TV")}</SLink>
+          </Item>
+          <Item current={pathname === "/search"}>
+            <SLink to="/search">{t("Search")}</SLink>
+          </Item>
+          <TransBtn
+            onClick={() => {
+              if (lang === "en-US") {
+                setLang("ko-KR");
+                changeLanguage("ko-KR");
+              } else {
+                setLang("en-US");
+                changeLanguage("en-US");
+              }
+              push("/*");
+            }}
+          >
+            {t("한국어")}
+          </TransBtn>
+        </List>
+      </Header>
+    );
+  }
+);

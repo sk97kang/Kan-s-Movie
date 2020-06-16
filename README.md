@@ -30,12 +30,13 @@ React + Typescript + Rest API를 이용한 Simple Movie Web
 - [x] More Movies Page(Noy Playing, Upcoming Playing, Popular Playing)에서 더 많은 Movie 표시
 - [x] Movie or TV Show Search 기능
 
+- 2020-06-16
+- [x] Javascript -> Typescript 전환
 - [x] 예고편 미리보기
+- [x] useContext를 이용한 Translate(한국어->English, English->한국어)
 
 ## 개발 예정
 
-- [x] Javascript -> Typescript 전환
-- [ ] useContext를 이용한 Translate
 - [ ] Movie recommendation
 - [ ] Movie Category
 
@@ -84,6 +85,7 @@ yarn add --dev @types/react-helmet
 
 - v1.0.0 : 최조 Release
 - v1.1.0 : Movie Detail 예고편 추가
+- v1.2.0 : 한국어, English 간 Translation 지원
 
 # 스터디 정리
 

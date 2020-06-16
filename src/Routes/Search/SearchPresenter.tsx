@@ -5,6 +5,7 @@ import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
 import Section from "../../Components/Section";
 import Poster from "../../Components/Poster";
+import { useT } from "../../Translation/context";
 
 const Container = styled.div`
   padding: 20px;
@@ -64,7 +65,7 @@ const SearchPresenter: React.FC<IProps> = ({
       <Input
         value={searchTerm}
         onChange={updateTerm}
-        placeholder="Search Movies or TV Shows..."
+        placeholder={useT()("Search Movies or TV Shows...")}
       />
     </Form>
     {loading ? (
