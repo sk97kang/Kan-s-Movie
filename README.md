@@ -1,44 +1,89 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Kan's Movie
 
-## Available Scripts
+React + Typescript + Rest API를 이용한 Simple Movie Web
 
-In the project directory, you can run:
+## Screens
 
-### `yarn start`
+- [x] Header : 뒤로가기, Movie, TV, Search 화면 전환
+- [x] Home : Show Movies
+- [x] TV : Show TV Shows
+- [x] Search : Movie or TV Show Search
+- [x] Detail : Movie or TV Show Detail
+- [x] More : More Movies
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API Verbs
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [x] Now playing (Movie)
+- [x] Upcoming (Movie)
+- [x] Popular (Movie, TV)
+- [x] Top Rated (TV)
+- [x] Airing Today (TV)
+- [x] TV Show Detail
+- [x] Movie Detail
+- [x] Search (Movie, TV)
 
-### `yarn test`
+## 기능
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] Header 내 뒤로가기 버튼을 이용한 뒤로가기
+- [x] Scrollbar를 이용한 Movie, TV Show List
+- [x] Grid Layout을 이용한 Movie, TV Show List
+- [x] More Movies Page(Noy Playing, Upcoming Playing, Popular Playing)에서 더 많은 Movie 표시
+- [x] Movie or TV Show Search 기능
 
-### `yarn build`
+## 개발 예정
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Javascript -> Typescript 전환
+- [ ] useContext를 이용한 Translate
+- [ ] Movie recommendation
+- [ ] Movie Category
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Use Library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Router Dom
+  - React에서 Router 기능을 제공
 
-### `yarn eject`
+```
+yarn add react-router-dom
+yarn add --dev @types/react-router-dom
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Styled Components
+  - JS Code내에서 Style Code를 쓸 수 있다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+yarn add styled-components
+yarn add --dev @types/styled-components
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Styled Reset
+  - SC를 이용해서 css를 초기화
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+yarn add styled-reset
+```
 
-## Learn More
+- Axios
+  - API에 request하여 정보는 받아옴
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+yarn add axios
+yarn add --dev @types/axios
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React Helmet
+  - WebSite의 Title을 쉽게 바꿀 수 있음
+
+```
+yarn add react-helmet
+yarn add --dev @types/react-helmet
+```
+
+# Version
+
+- v1.0.0 : 최조 Release
+
+# 스터디 정리
+
+## Container Presenter Pattern
+
+- Container(Logic)과 Presenter(UI)를 분리
