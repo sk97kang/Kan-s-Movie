@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Loader from "../../Components/Loader";
+import Videos from "../../Components/Videos";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -48,7 +49,7 @@ const Cover = styled.div<{ bgImage?: string }>`
 `;
 
 const Data = styled.div`
-  width: 60%;
+  width: 70%;
   margin-left: 10px;
   @media screen and (max-width: 880px) {
     width: 100%;
@@ -80,6 +81,7 @@ const Overview = styled.div`
   opacity: 0.7;
   line-height: 1.5;
   width: 100%;
+  margin-bottom: 20px;
 `;
 
 interface IProps {
@@ -149,6 +151,7 @@ const DetailPresenter: React.FC<IProps> = ({ result, loading, error }) =>
               </Item>
             </ItemContainer>
             <Overview>{result.overview}</Overview>
+            <Videos videos={result.videos.results} />
           </Data>
         </Content>
       </Container>
