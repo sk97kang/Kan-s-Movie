@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { useSetLang, useT, useLang } from "../Translation/context";
 import { changeLanguage } from "../api";
