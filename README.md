@@ -86,6 +86,7 @@ yarn add --dev @types/react-helmet
 - v1.0.0 : 최조 Release
 - v1.1.0 : Movie Detail 예고편 추가
 - v1.2.0 : 한국어, English 간 Translation 지원
+- v1.2.1 : 사이트 접속 시 사용자 언어에 따라 defaultLanguage 적용
 
 # 스터디 정리
 

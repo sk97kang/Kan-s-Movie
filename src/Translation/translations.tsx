@@ -16,6 +16,23 @@ const translations = {
     "Search Movies or TV Shows...": "검색어를 입력하세요.",
     "Loading...": "로딩...",
   },
+  "en-US": {
+    "Hello!": "Hello!",
+    Movie: "Movie",
+    TV: "TV",
+    Search: "Search",
+    More: "More",
+    "Now Playing": "Now Playing",
+    "Upcoming Playing": "Upcoming Playing",
+    "Popular Playing": "Popular Playing",
+    Back: "Back",
+    한국어: "한국어",
+    "Top Rated Shows": "Top Rated Shows",
+    "Popular Shows": "Popular Shows",
+    "Airing Today": "Airing Today",
+    "Search Movies or TV Shows...": "Search Movies or TV Shows...",
+    "Loading...": "Loading...",
+  },
 };
 
 export default translations;

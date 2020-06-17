@@ -15,11 +15,7 @@ interface IProps {
 const Lang: React.FC<IProps> = ({ defaultLang, children, translations }) => {
   const [lang, setLang] = useState(defaultLang);
   const hyperTranslate = (text: string) => {
-    if (lang === defaultLang) {
-      return text;
-    } else {
-      return translations[lang][text];
-    }
+    return translations[lang][text];
   };
   return (
     <LangContext.Provider value={{ lang, setLang, t: hyperTranslate }}>
