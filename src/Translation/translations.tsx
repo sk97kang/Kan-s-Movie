@@ -15,6 +15,10 @@ const translations = {
     "Airing Today": "오늘 방송",
     "Search Movies or TV Shows...": "검색어를 입력하세요.",
     "Loading...": "로딩...",
+    "Similar Movie": "비슷한 영화",
+    "Recommended Movie": "추천 영화",
+    Cast: "배우",
+    Crew: "제작진",
   },
   "en-US": {
     "Hello!": "Hello!",
@@ -32,6 +36,10 @@ const translations = {
     "Airing Today": "Airing Today",
     "Search Movies or TV Shows...": "Search Movies or TV Shows...",
     "Loading...": "Loading...",
+    "Similar Movie": "Similar Movie",
+    "Recommended Movie": "Recommended Movie",
+    Cast: "Cast",
+    Crew: "Crew",
   },
 };
 

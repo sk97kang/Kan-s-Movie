@@ -35,6 +35,11 @@ React + Typescript + Rest API를 이용한 Simple Movie Web
 - [x] 예고편 미리보기
 - [x] useContext를 이용한 Translate(한국어->English, English->한국어)
 
+- 2020-06-17
+- [x] 영화 - Detail 화면 내 `Similar Movie` 추가
+- [x] 영화 - Detail 화면 내 `Recommended Movie` 추가
+- [x] 영화 - Detail 화면 내 `cast`, `crew` 추가
+
 ## 개발 예정
 
 - [ ] Movie recommendation
@@ -87,6 +92,7 @@ yarn add --dev @types/react-helmet
 - v1.1.0 : Movie Detail 예고편 추가
 - v1.2.0 : 한국어, English 간 Translation 지원
 - v1.2.1 : 사이트 접속 시 사용자 언어에 따라 defaultLanguage 적용
+- v1.3.0 : Detail 화면 내 `Similar Movie`, `Recommended Movie`, `cast`, `crew` 추가
 
 # 스터디 정리
 

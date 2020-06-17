@@ -29,8 +29,11 @@ const Container = styled.div`
 `;
 
 const ContainerTitle = styled.div`
-  font-size: 28px;
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(235, 235, 235, 0.24);
 `;
 
 const Title = styled.div<{ actived: boolean }>`
@@ -97,10 +100,17 @@ const opts = {
 };
 
 const Videos: React.FC<IProps> = ({ videos }) => {
-  const [videoId, setVideoId] = useState(videos.length > 0 ? videos[0].key : 0);
+  const [videoId, setVideoId] = useState("");
+
+  if (
+    videos.length > 0 &&
+    videos.find((video) => video.key === videoId) === undefined
+  ) {
+    setVideoId(videos[0].key);
+  }
   return (
     <>
-      <ContainerTitle>예고편</ContainerTitle>
+      <ContainerTitle>트레일러</ContainerTitle>
       {videos.length > 0 ? (
         <Container>
           <Video videoId={videoId} opts={opts} />
@@ -119,7 +129,7 @@ const Videos: React.FC<IProps> = ({ videos }) => {
           </TitleContainer>
         </Container>
       ) : (
-        "예고편 없음"
+        "트레일러 없음"
       )}
     </>
   );

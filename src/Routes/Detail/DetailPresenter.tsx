@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Loader from "../../Components/Loader";
 import Videos from "../../Components/Videos";
+import Section from "../../Components/Section";
+import Poster from "../../Components/Poster";
+import Propfile from "../../Components/Profile";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -49,8 +52,35 @@ const Cover = styled.div<{ bgImage?: string }>`
 `;
 
 const Data = styled.div`
+  padding: 5px;
   width: 70%;
   margin-left: 10px;
+  overflow-y: auto;
+  /* SCROLL */
+
+  /* 스크롤바의 width */
+  ::-webkit-scrollbar {
+    width: 20px;
+    height: 12px;
+  }
+
+  /* 스크롤바의 전체 배경색 */
+  ::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  /* 스크롤바 색 */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+
+  /* 위 아래 버튼 (버튼 없애기를 함) */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
   @media screen and (max-width: 880px) {
     width: 100%;
   }
@@ -76,6 +106,10 @@ const Divider = styled.span`
   font-size: 6px;
 `;
 
+const VerticalDivider = styled.div`
+  margin: 30px 0px;
+`;
+
 const Overview = styled.div`
   font-size: 14px;
   opacity: 0.7;
@@ -88,6 +122,14 @@ interface IProps {
   result: any;
   error: string | null;
   loading: boolean;
+}
+
+interface IMovie {
+  id: number;
+  poster_path: string;
+  title: string;
+  vote_average: number;
+  release_date: string;
 }
 
 const DetailPresenter: React.FC<IProps> = ({ result, loading, error }) =>
@@ -151,7 +193,70 @@ const DetailPresenter: React.FC<IProps> = ({ result, loading, error }) =>
               </Item>
             </ItemContainer>
             <Overview>{result.overview}</Overview>
+
+            {result.credits.crew && result.credits.crew.length > 0 && (
+              <Section title="Crew" path="crew">
+                {result.credits.crew.map((credit: any) => (
+                  <Propfile
+                    key={credit.crew_id}
+                    id={credit.crew_id}
+                    name={credit.name}
+                    part={credit.department}
+                    imageUrl={credit.profile_path}
+                  />
+                ))}
+              </Section>
+            )}
+
+            {result.credits.cast && result.credits.cast.length > 0 && (
+              <Section title="Cast" path="cast">
+                {result.credits.cast.map((credit: any) => (
+                  <Propfile
+                    key={credit.cast_id}
+                    id={credit.cast_id}
+                    name={credit.name}
+                    part={credit.character}
+                    imageUrl={credit.profile_path}
+                  />
+                ))}
+              </Section>
+            )}
+
             <Videos videos={result.videos.results} />
+            <VerticalDivider />
+
+            {result.similar && result.similar.results.length > 0 && (
+              <Section title="Similar Movie" path="similar">
+                {result.similar.results.map((movie: IMovie) => (
+                  <Poster
+                    key={movie.id}
+                    id={movie.id}
+                    imageUrl={movie.poster_path}
+                    title={movie.title}
+                    rating={movie.vote_average}
+                    year={movie.release_date}
+                    isMovie={true}
+                  />
+                ))}
+              </Section>
+            )}
+
+            {result.recommendations &&
+              result.recommendations.results.length > 0 && (
+                <Section title="Recommended Movie" path="recommendations">
+                  {result.recommendations.results.map((movie: IMovie) => (
+                    <Poster
+                      key={movie.id}
+                      id={movie.id}
+                      imageUrl={movie.poster_path}
+                      title={movie.title}
+                      rating={movie.vote_average}
+                      year={movie.release_date}
+                      isMovie={true}
+                    />
+                  ))}
+                </Section>
+              )}
           </Data>
         </Content>
       </Container>

@@ -8,6 +8,7 @@ interface IState {
   result: any;
   error: string | null;
   loading: boolean;
+  pathname: string;
 }
 
 export default class extends React.Component<
@@ -18,9 +19,24 @@ export default class extends React.Component<
     result: {},
     error: null,
     loading: true,
+    pathname: "",
   };
 
+  componentDidUpdate() {
+    const {
+      location: { pathname },
+    } = this.props;
+
+    if (this.state.pathname !== pathname) {
+      this.setDetail();
+    }
+  }
+
   async componentDidMount() {
+    this.setDetail();
+  }
+
+  setDetail = async () => {
     const {
       match: {
         params: { id },
@@ -44,9 +60,9 @@ export default class extends React.Component<
     } catch {
       this.setState({ error: "Can't find anything" });
     } finally {
-      this.setState({ loading: false, result });
+      this.setState({ loading: false, result, pathname });
     }
-  }
+  };
 
   render() {
     const { result, error, loading } = this.state;

@@ -20,12 +20,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
 `;
 
 const Grid = styled.div<{ isFlex: boolean }>`
-  margin-top: 20px;
+  margin-top: 10px;
 
   display: ${(props) => (props.isFlex ? "flex" : "grid")};
   overflow-x: auto;
@@ -88,7 +88,7 @@ const Section: React.SFC<IProps> = ({ title, path, children }) => {
     <Container>
       <Title>{t(title)}</Title>
       <Grid isFlex={path ? true : false}>{children}</Grid>
-      {path && path !== "search" && !path.includes("tv") && (
+      {path && path.includes("movie") && (
         <MoreBtn to={`/more/${path}`}>{t("More")}</MoreBtn>
       )}
     </Container>
